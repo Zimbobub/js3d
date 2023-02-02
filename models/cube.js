@@ -1,5 +1,5 @@
 import { rectangle } from "./shapes.js";
-import { Poly } from "../mesh.js";
+import { Poly } from "../renderer/mesh.js";
 
 export function createCube(size) {
     let mesh = [];
@@ -63,13 +63,6 @@ export function createCube(size) {
         ]);
         mesh.push(rect[0], rect[1]);
     }
-
-    console.log([
-        [0 - size / 2, 0 + size / 2, 0 - size / 2],
-        [0 - size / 2, 0 + size / 2, 0 + size / 2],
-        [0 + size / 2, 0 + size / 2, 0 - size / 2],
-        [0 + size / 2, 0 + size / 2, 0 + size / 2]
-    ]);
 
     return mesh;
 }

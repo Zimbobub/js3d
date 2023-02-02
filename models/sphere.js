@@ -1,24 +1,13 @@
 import { rectangle } from "./shapes.js";
-import { Vec, Poly } from "../mesh.js";
+import { Vec, Poly } from "../renderer/mesh.js";
 
 export function createSphere(resolution, radius) {
-
-    //console.log(360 / resolution);
-
     let mesh = [];
 
     const circle = createLatitudes(resolution, radius);
 
-
-
-
-
-    //console.log(circle);
-
     let latitudes = [];
-
-    for (let i = 0; i < (circle.length / 2); i++) {
-        //console.log(circle[i]);
+    for (let i = 0; i < (circle.length/* / 2*/); i++) {
         latitudes.push(circle[i]);
     }
 
@@ -30,13 +19,6 @@ export function createSphere(resolution, radius) {
         points.push(createCircle(resolution, point.x, point.y));
     });
     points.push(points[0]);
-
-    //points[points.length - 1].forEach(point => {
-    //    point.y = 0 - point.y;
-    //});
-
-    console.log(points);
-
 
     for (let i = 1; i < points.length; i++) {
         for (let j = 0; j < points[i].length; j++) {
@@ -65,7 +47,7 @@ export function createSphere(resolution, radius) {
             }
 
 
-            console.log(i, j);
+            //console.log(i, j);
 
 
         }
@@ -103,8 +85,6 @@ function createLatitudes(resolution, radius) {
         points.push(point);
 
         angle += 360 / resolution;
-
-        //console.log(point.x, point.y, angle);
     }
 
     return points;
@@ -125,8 +105,6 @@ function createCircle(resolution, radius, height) {
         points.push(point);
 
         angle += 360 / resolution;
-
-        //console.log(point.x, point.y, angle);
     }
 
     return points;
@@ -139,56 +117,3 @@ function toDegrees(angle) {
 function toRadians(angle) {
     return angle * (Math.PI / 180);
 }
-
-/*
-function createGeometry(n, circumradius) {
-
-    // Generate the vertices of the n-gon.
-    for (i = 1; i <= n; i++) {
-        mesh.push(new Vec(
-            circumradius * Math.sin((Math.PI / n) + (i * ((2 * Math.PI) / n))),
-            circumradius * Math.cos((Math.PI / n) + (i * ((2 * Math.PI) / n))),
-            0
-        ));
-    }
-
-
-}
-
-
-
-
-
-function icosahedron(r) {
-    r = r || 0.5;
-
-    const phi = (1 + Math.sqrt(5)) / 2;
-    const a = 1 / 2;
-    const b = 1 / (2 * phi);
-
-    var vertices = [
-        new Vec(0, b, -a),
-        new Vec(b, a, 0),
-        new Vec(-b, a, 0),
-        new Vec(0, b, a),
-        new Vec(0, -b, a),
-        new Vec(-a, 0, b),
-        new Vec(a, 0, b),
-        new Vec(0, -b, -a),
-        new Vec(a, 0, -b),
-        new Vec(-a, 0, -b),
-        new Vec(b, -a, 0),
-        new Vec(-b, -a, 0)
-    ];
-
-
-
-    return vertices
-
-    vertices = vertices.map(function (v) { return v.normalize().scale(r); })
-
-
-}
-
-
-*/

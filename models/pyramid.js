@@ -1,5 +1,5 @@
 import { rectangle } from "./shapes.js";
-import { Poly } from "../mesh.js";
+import { Poly } from "../renderer/mesh.js";
 
 export function createPyramid(size) {
     let mesh = []
